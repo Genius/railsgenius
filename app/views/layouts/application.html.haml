@@ -20,7 +20,7 @@
             - if user_signed_in?
               %li
                 = link_to href: edit_user_registration_path do
-                  = avatar current_user
+                  = render 'users/avatar', user: current_user
                   Signed in as
                   = current_user.email
               %li.divider
