@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: rapgenius-lite-dev
+  pool: 10
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: rapgenius-lite-test
+  pool: 10
+  timeout: 5000
