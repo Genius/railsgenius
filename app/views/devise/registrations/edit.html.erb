@@ -6,6 +6,15 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
+  <div><%= f.label :first_name %><br />
+  <%= f.text_field :first_name %></div>
+
+  <div><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></div>
+
+  <div><%= f.label :about_me %><br />
+  <%= f.text_area :about_me %></div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
