@@ -1,0 +1,16 @@
+<div class="span2">
+  <%= avatar(@user, size: 100) %>
+</div>
+<div class="span6">
+  <dl>
+    <dt>Name:</dt>
+    <dd><%= @user.first_name %>&nbsp;<%= @user.last_name %></dd>
+    <dt>Email:</dt>
+    <dd><%= @user.email %></dd>
+    <dt>About me:</dt>
+    <dd><%= @user.about_me %></dd>
+  </dl>
+
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</div>

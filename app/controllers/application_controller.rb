@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :configure_permitted_user_params, if: :devise_controller?
+  before_action :configure_permitted_user_params
 
   protected
 
@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
       for(:account_update).
       push(:first_name, :last_name, :about_me)
   end
+
+  def allowed_user_params
+    devise_parameter_sanitizer.account_update
+  end
+
+  def resource_class; User; end
+  def resource_name; resource_class.to_s.underscore; end
+  helper_method :resource_class, :resource_name
 end

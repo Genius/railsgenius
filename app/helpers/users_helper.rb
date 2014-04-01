@@ -1,8 +1,8 @@
 module UsersHelper
-  def avatar(user)
-    image_tag(user.avatar_url,
+  def avatar(user, size: 25)
+    image_tag(user.avatar_url(size: size),
               class: 'user-avatar',
-              width:  25,
-              height: 25)
+              width:  size,
+              height: size)
   end
 end

@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem "decent_exposure"
-gem "decent_generators"
 gem "devise"
 gem "haml"
 gem "haml-rails"

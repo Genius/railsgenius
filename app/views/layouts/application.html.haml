@@ -19,7 +19,7 @@
             %li.divider
             - if user_signed_in?
               %li
-                = link_to href: edit_user_registration_path do
+                = link_to edit_current_user_path do
                   = render 'users/avatar', user: current_user
                   Signed in as
                   = current_user.email
@@ -43,5 +43,6 @@
               - else
                 = flash[key]
               - flash.delete(key)
-          = yield
+          #main{class: "#{controller_name}-#{action_name}"}
+            = yield
   = yield(:page_javascript) if content_for? :page_javascript

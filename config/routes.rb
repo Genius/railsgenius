@@ -1,6 +1,7 @@
 RapgeniusLite::Application.routes.draw do
-  devise_for :users
   root to: 'static#index'
 
-  resources :users, only: :show
+  get 'users/edit', to: 'users#edit', as: :edit_current_user
+  devise_for :users
+  resources :users
 end
