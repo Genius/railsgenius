@@ -14,7 +14,10 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.brand{href: '/'}= application_name
+          %a.brand{href: '/'}
+            RailsGenius
+          %ul.nav
+            %li= link_to 'Talks', talks_path
           %ul.nav.pull-right
             %li.divider
             - if user_signed_in?
