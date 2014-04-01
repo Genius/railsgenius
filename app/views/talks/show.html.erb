@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<dl>
+  <dt>Speaker:</dt>
+  <dd><%= avatar(@talk.speaker) %><%= @talk.speaker.first_name %>&nbsp;<%= @talk.speaker.last_name %></dd>
+  <dt>Title:</dt>
+  <dd><%= @talk.title %></dd>
+  <dt>Abstract:</dt>
+  <dd><%= @talk.abstract %></dd>
+</dl>
+
+<%= link_to 'Edit', edit_talk_path(@talk) %> |
+<%= link_to 'Back', talks_path %>

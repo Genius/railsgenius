@@ -1,0 +1,27 @@
+<%= form_for(@talk) do |f| %>
+  <% if @talk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+
+      <ul>
+      <% @talk.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+  <div><%= f.label :title %><br />
+  <%= f.text_field :title, autofocus: true %></div>
+
+  <div><%= f.label :abstract %><br />
+  <%= f.text_area :abstract %></div>
+
+  <div><%= f.label :speaker_id, 'Speaker' %><br />
+    <%= f.select :speaker_id, User.all.map { |u| ["#{u.first_name} #{u.last_name}".squish, u.id] }, { include_blank: true } %></div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
