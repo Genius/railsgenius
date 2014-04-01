@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :remove_password, only: :update
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize_access!(current_user.admin? || current_user == @user)
   end
 
   def create
@@ -31,6 +33,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize_access!(current_user.admin? || current_user == @user)
+
     respond_to do |format|
       if @user.update(allowed_user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -56,7 +60,7 @@ class UsersController < ApplicationController
     if params[:id]
       @user = User.find(params[:id])
     elsif user_signed_in?
-      @user = current_user
+      @user = User.find(current_user.id)
     else
       raise ActiveRecord::RecordNotFound
     end

@@ -11,6 +11,9 @@
     <dd><%= @user.about_me %></dd>
   </dl>
 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <% if @user == current_user || current_user.try(:admin?) %>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+  <% end %>
+
   <%= link_to 'Back', users_path %>
 </div>

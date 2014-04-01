@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  Unauthorized = Class.new(StandardError)
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -20,4 +22,8 @@ class ApplicationController < ActionController::Base
   def resource_class; User; end
   def resource_name; resource_class.to_s.underscore; end
   helper_method :resource_class, :resource_name
+
+  def authorize_access!(condition = false)
+    raise Unauthorized unless condition
+  end
 end
