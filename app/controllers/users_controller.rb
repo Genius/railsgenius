@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    # render text: Users::Show.new(current_user, @user).render,
+    #        layout: :default
     render text: perspective('users/show', user: @user), layout: :default
   end
 
