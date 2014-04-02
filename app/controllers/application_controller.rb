@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_user_params
 
+  layout lambda { |controller| !controller.request.xhr? && 'application' }
+
   protected
 
   def configure_permitted_user_params

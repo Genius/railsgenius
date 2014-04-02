@@ -6,7 +6,7 @@
   <dt>Title:</dt>
   <dd><%= @talk.title %></dd>
   <dt>Abstract:</dt>
-  <dd><%= @talk.abstract_as_html %></dd>
+  <dd class="talk-abstract"><%= @talk.abstract_as_html %></dd>
 </dl>
 
 <%= link_to 'Edit', edit_talk_path(@talk) %> |

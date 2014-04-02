@@ -1,0 +1,10 @@
+<div class="annotation-tooltip">
+  <div class="content">
+    <blockquote><%= @annotation.referent %></blockquote>
+    <p>
+      <%= @annotation.body %>
+    </p>
+
+    <%= link_to 'Edit', edit_annotation_path(@annotation) %>
+  </div>
+</div>

@@ -8,5 +8,9 @@ RapgeniusLite::Application.routes.draw do
   resources :talks
 
   get '/:id', to: 'annotations#show', constraints: { id: /\d+/ }
-  resources :annotations
+  resources :annotations do
+    member do
+      get 'tooltip'
+    end
+  end
 end

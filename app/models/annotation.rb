@@ -5,7 +5,7 @@ class Annotation < ActiveRecord::Base
   validates :body, :talk, :created_by, presence: true
 
   def set_referent(abstract_html = talk.abstract_as_html)
-    self.referent = Nokogiri::HTML(talk.abstract_as_html).at("a[data-id=#{id}]").try(:inner_text)
+    self.referent = Nokogiri::HTML(talk.abstract_as_html).at("a[data-id=#{id.to_s.inspect}]").try(:inner_text)
   end
 
   def truncated_body
