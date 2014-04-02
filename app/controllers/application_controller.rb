@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
   def authorize_access!(condition = false)
     raise Unauthorized unless condition
   end
+
+  def default_context
+    {current_user: current_user}
+  end
 end

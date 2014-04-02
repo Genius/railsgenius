@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    render text: perspective('users/show', user: @user), layout: :default
   end
 
   def new
@@ -33,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @user.update(allowed_user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

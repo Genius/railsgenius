@@ -1,1 +1,19 @@
-<h1>Hello, {{email}}!</h1>
+<div class="span2">
+  {{{avatar}}}
+</div>
+<div class="span6">
+  <dl>
+    <dt>Name:</dt>
+    <dd>{{display_name}}</dd>
+    <dt>Email:</dt>
+    <dd>{{email}}</dd>
+    <dt>About me:</dt>
+    <dd>{{about_me}}</dd>
+  </dl>
+
+  {{#edit}}
+    <a href="{{edit_path}}">Edit</a> |
+  {{/edit}}
+
+  <a href="{{go_back_path}}">Back</a>
+</div>
