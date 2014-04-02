@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :remove_password, only: :update
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_filter :authorize!, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    authorize_access!(current_user.admin? || current_user == @user)
   end
 
   def create
@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize_access!(current_user.admin? || current_user == @user)
 
     respond_to do |format|
       if @user.update(allowed_user_params)
@@ -55,6 +54,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorize!
+    authorize_access!(current_user.admin? || current_user == @user)
+  end
 
   def set_user
     if params[:id]

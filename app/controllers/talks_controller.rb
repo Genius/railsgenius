@@ -1,6 +1,7 @@
 class TalksController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
+  before_action :authorize!, only: [:edit, :update, :destroy]
 
   def index
     @talks = Talk.all
@@ -52,6 +53,10 @@ class TalksController < ApplicationController
   end
 
   private
+
+  def authorize!
+    authorize_access!(current_user == @talk.created_by || current_user.admin?)
+  end
 
   def set_talk
     @talk = Talk.find(params[:id])
