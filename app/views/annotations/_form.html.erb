@@ -12,7 +12,7 @@
   <% end %>
 
   <div><%= f.label :body %><br />
-  <%= f.text_field :body, autofocus: true %></div>
+  <%= f.text_area :body, autofocus: true, rows: 10 %></div>
 
   <div><%= f.label :talk_id, 'Talk' %><br />
     <%= f.select :talk_id, Talk.all.map { |t| [t.title, t.id] }, { include_blank: true } %></div>
