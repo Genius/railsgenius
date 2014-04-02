@@ -6,4 +6,7 @@ RapgeniusLite::Application.routes.draw do
   resources :users
 
   resources :talks
+
+  get '/:id', to: 'annotations#show', constraints: { id: /\d+/ }
+  resources :annotations
 end

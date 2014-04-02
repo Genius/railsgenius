@@ -1,0 +1,28 @@
+<h1>Listing annotations</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Talk</th>
+      <th>Referent</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @annotations.each do |annotation| %>
+      <tr>
+        <td><%= link_to annotation.referent, annotation.talk %></td>
+        <td><%= link_to annotation.truncated_body, annotation.talk %></td>
+        <td><%= link_to 'Edit', edit_annotation_path(annotation) %></td>
+        <td><%= link_to 'Destroy', annotation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Annotation', new_annotation_path %>
