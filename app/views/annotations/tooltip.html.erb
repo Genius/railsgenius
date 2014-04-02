@@ -2,7 +2,7 @@
   <div class="content">
     <blockquote><%= @annotation.referent %></blockquote>
     <p>
-      <%= @annotation.body %>
+      <%= @annotation.body_as_html %>
     </p>
 
     <%= link_to 'Edit', edit_annotation_path(@annotation) %>

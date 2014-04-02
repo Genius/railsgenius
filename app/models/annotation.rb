@@ -8,6 +8,10 @@ class Annotation < ActiveRecord::Base
     self.referent = Nokogiri::HTML(talk.abstract_as_html).at("a[data-id=#{id.to_s.inspect}]").try(:inner_text)
   end
 
+  def body_as_html
+    HTML::Sanitizer.new.sanitize(body).html_safe
+  end
+
   def truncated_body
     if body.length > 100
       body[0, 100] + '...'
