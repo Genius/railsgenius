@@ -1,4 +1,5 @@
 class TalksController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,6 +18,7 @@ class TalksController < ApplicationController
 
   def create
     @talk = Talk.new(talk_params)
+    @talk.created_by = current_user
 
     respond_to do |format|
       if @talk.save

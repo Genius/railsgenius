@@ -2,6 +2,7 @@ class Talk < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   belongs_to :speaker, class_name: 'User'
+  belongs_to :created_by, class_name: 'User'
   has_many :annotations
 
   validates :title, :abstract, :speaker, presence: true
