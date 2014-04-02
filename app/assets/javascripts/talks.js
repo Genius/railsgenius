@@ -16,7 +16,7 @@
           left: "-10000px"
         }).focus()
 
-        $content.css({left: ($abstract.position().left - $content.outerWidth() - 50) + "px"})
+        $content.css({left: ($abstract.position().left - $content.outerWidth() - 30) + "px"})
       })
 
       return false
