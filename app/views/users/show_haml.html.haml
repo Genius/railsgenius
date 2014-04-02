@@ -1,0 +1,17 @@
+-# users/show.html.haml
+.span2
+  = avatar(@user, size: 100)
+.span6
+  %dl
+    %dt Name:
+    %dd= "#{@user.first_name} #{@user.last_name}"
+    %dt Email:
+    %dd= @user.email
+    %dt About me:
+    %dd= @user.about_me
+
+  - if @user == current_user || current_user.try(:admin?)
+    = link_to 'Edit', edit_user_path(@user)
+    = "|"
+
+  = link_to 'Back', users_path
