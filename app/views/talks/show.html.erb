@@ -2,7 +2,7 @@
 
 <dl>
   <dt>Speaker:</dt>
-  <dd><%= avatar(@talk.speaker) %><%= @talk.speaker.first_name %>&nbsp;<%= @talk.speaker.last_name %></dd>
+  <dd><%= avatar(@talk.speaker) %><%= link_to "#{@talk.speaker.first_name} #{@talk.speaker.last_name}", @talk.speaker %></dd>
   <dt>Title:</dt>
   <dd><%= @talk.title %></dd>
   <dt>Abstract:</dt>
