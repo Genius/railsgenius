@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_filter :authorize!, only: [:edit, :update, :destroy]
 
+  respond_to :html, :json
+
   def index
     @users = User.all
   end
@@ -11,7 +13,7 @@ class UsersController < ApplicationController
   def show
     # render text: Users::Show.new(current_user, @user).render,
     #        layout: :default
-    render text: perspective('users/show', user: @user), layout: :default
+    respond_with(perspective('users/show', user: @user), responder: LinearPerspective::Responder)
   end
 
   def new
