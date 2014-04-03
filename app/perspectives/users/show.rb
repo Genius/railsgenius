@@ -2,6 +2,8 @@ module Users
   class Show < LinearPerspective::Base
     include ActionView::Helpers::AssetTagHelper
 
+    cache { user }
+
     param :user
     delegate_property :email, :about_me, to: :user
 
