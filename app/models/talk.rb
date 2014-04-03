@@ -4,6 +4,7 @@ class Talk < ActiveRecord::Base
   belongs_to :speaker, class_name: 'User'
   belongs_to :created_by, class_name: 'User'
   has_many :annotations
+  has_many :contributors, through: :annotations, source: :created_by, class_name: 'User'
 
   validates :title, :abstract, :speaker, presence: true
 

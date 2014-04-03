@@ -1,0 +1,23 @@
+.contributor
+  border: 1px solid grey
+  padding: 10px
+  overflow: auto
+  margin-bottom: 20px
+
+  dl
+    &:after
+      display: block
+      clear: both
+      content: "."
+      height: 0px
+      visibility: hidden
+
+    dt, dd
+      float: left
+    dt
+      clear: both
+    dd
+      width: 300px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis

@@ -5,7 +5,11 @@ RapgeniusLite::Application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :talks
+  resources :talks do
+    member do
+      resources :contributors, only: :index
+    end
+  end
 
   get '/:id', to: 'annotations#show', constraints: { id: /\d+/ }
   resources :annotations do

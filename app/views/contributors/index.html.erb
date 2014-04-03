@@ -1,0 +1,7 @@
+<h4>Everyone who annotated: <%= link_to(@talk.title, @talk) %></h4>
+
+<% @contributors.each do |user| %>
+  <div class="contributor">
+    <%= render 'users/show', user: user %>
+  </div>
+<% end %>
