@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "dalli"
 gem "decent_exposure"
 gem "devise"
 gem "haml"
