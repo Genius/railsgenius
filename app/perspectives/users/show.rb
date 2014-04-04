@@ -19,13 +19,8 @@ module Users
 
     property(:go_back_path) { users_path }
 
-    property(:avatar) do
-      size = 100
-
-      image_tag(user.avatar_url(size: size),
-                class: 'user-avatar',
-                width:  size,
-                height: size)
+    property(:user_avatar) do
+      avatar(user)
     end
   end
 end

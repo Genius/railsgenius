@@ -1,6 +1,14 @@
-<tr>
-  <td>{{speaker_name}}</td>
-  <td><a href="{{path}}">{{title}}</td>
-  <td><a href="{{edit_path}}">Edit</a></td>
-  <td>{{destroy_link}}</td>
-</tr>
+<dl>
+  <dt>Speaker:</dt>
+  <dd>{{{speaker_avatar}}}<a href="{{speaker_path}}">{{speaker_name}}</a></dd>
+  <dt>Title:</dt>
+  <dd>{{title}}</dd>
+  <dt>Abstract:</dt>
+  <dd class="talk-abstract">{{{abstract}}}</dd>
+</dl>
+
+{{#edit}}
+  <a href="{{edit_path}}">Edit</a>
+{{/edit}}
+
+<a href="{{talks_path}}">Back</a>

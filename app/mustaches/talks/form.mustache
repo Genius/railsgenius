@@ -1,0 +1,27 @@
+<form accept-charset="UTF-8" action="{{submit_to}}" class="{{form_class}}" id="{{form_id}}" method="post">
+  {{{errors}}}
+
+  {{#submit_method}}
+    <input type="hidden" name="_method" value="{{submit_method}}">
+  {{/submit_method}}
+
+  <div><label for="talk_title">Title<br />
+    <input type="text" id="talk_title" name="talk[title]" autofocus="true" value="{{title}}" /></div>
+
+  <div><label for="talk_abstract">Abstract<br />
+      <textarea id="talk_abstract" name="talk[abstract]" rows="20">{{abstract}}</textarea>
+  </div>
+
+  <div><label for="talk_speaker">Speaker<br />
+    <select id="speaker_id" name="talk[speaker_id]">
+      <option value=""></option>
+      {{#speakers}}
+        <option {{#selected}}SELECTED{{/selected}} value="{{id}}">{{name}}</option>
+      {{/speakers}}
+    </select>
+  </div>
+
+  <div class="actions">
+    <input name="commit" type="submit" value="Submit">
+  </div>
+</form>
