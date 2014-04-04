@@ -1,7 +1,7 @@
 PATH
-  remote: ../repository-browser/linear_perspective/
+  remote: ../perspectives
   specs:
-    linear_perspective (0.0.1)
+    perspectives (0.0.1)
       activesupport
       mustache (~> 0.99.5)
 
@@ -180,9 +180,9 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
-  linear_perspective!
   mustache
   nokogiri
+  perspectives!
   pg
   pry
   pry-rails

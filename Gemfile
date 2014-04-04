@@ -5,7 +5,7 @@ gem "decent_exposure"
 gem "devise"
 gem "haml"
 gem "haml-rails"
-gem "linear_perspective", path: '../repository-browser/linear_perspective/'
+gem "perspectives", path: '../perspectives'
 gem "mustache"
 gem "nokogiri"
 gem "pg"

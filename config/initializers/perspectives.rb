@@ -1,5 +1,5 @@
 Rails.configuration.to_prepare do
-  LinearPerspective.configure do |config|
+  Perspectives.configure do |config|
     config.caching = !!ENV['CACHE'] || ApplicationController.perform_caching
 
     server = ENV.fetch('BOXEN_MEMCACHED_URL', 'localhost:11211')
