@@ -1,14 +1,14 @@
 module Users
   class Show < Perspectives::Base
-    include ActionView::Helpers::AssetTagHelper
+    include Users::Helpers
 
     cache { user }
 
     param :user
     delegate_property :email, :about_me, to: :user
 
-    property(:display_name) do
-      "#{user.first_name} #{user.last_name}".squish
+    property(:name) do
+      display_name(user)
     end
 
     property(:edit) do
