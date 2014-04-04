@@ -3,18 +3,22 @@ class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
   before_action :authorize!, only: [:edit, :update, :destroy]
 
+  perspectives_actions
+
   def index
-    @talks = Talk.all
+    respond_with(perspective('talks/index', all_talks: Talk.all))
   end
 
   def show
+    respond_with(perspective('talks/show', talk: @talk))
   end
 
   def new
-    @talk = Talk.new
+    respond_with(perspective('talks/new', talk: Talk.new))
   end
 
   def edit
+    respond_with(perspective('talks/edit', talk: @talk))
   end
 
   def create
@@ -38,8 +42,7 @@ class TalksController < ApplicationController
         format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
+        respond_with(perspective('talks/edit', talk: @talk))
       end
     end
   end

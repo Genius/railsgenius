@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require mustache-0.8.1
+//= require_tree ../../mustaches
+//= require perspectives
 //= require_tree .

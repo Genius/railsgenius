@@ -1,5 +1,5 @@
 module Contributors
-  class Index < LinearPerspective::Base
+  class Index < Perspectives::Base
     param :talk
     delegate_property :title, to: :talk
     property(:path) { talk_path(id: talk.id) }

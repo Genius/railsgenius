@@ -1,5 +1,5 @@
 module Users
-  class Show < LinearPerspective::Base
+  class Show < Perspectives::Base
     include ActionView::Helpers::AssetTagHelper
 
     cache { user }

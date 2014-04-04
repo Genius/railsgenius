@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     # render text: Users::Show.new(current_user, @user).render,
     #        layout: :default
-    respond_with(perspective('users/show', user: @user), responder: LinearPerspective::Responder)
+    respond_with(perspective('users/show', user: @user), responder: Perspectives::Responder)
   end
 
   def new

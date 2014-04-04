@@ -25,4 +25,8 @@
 
   $(setup_annotation_click_handlers)
   $(document).on('page:load', setup_annotation_click_handlers)
+
+  $(function() {
+    $(document).perspectives('a', '#perspectives')
+  })
 })(jQuery, document, window)
