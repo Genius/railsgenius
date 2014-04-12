@@ -21,29 +21,27 @@ class AnnotationsController < ApplicationController
   end
 
   def create
-    @annotation = Annotation.new(annotation_params)
-    @annotation.created_by = current_user
+    annotation = Annotation.new(annotation_params)
+    annotation.created_by = current_user
 
-    respond_to do |format|
-      if @annotation.save
-        format.html { redirect_to @annotation, notice: 'Annotation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @annotation }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @annotation.errors, status: :unprocessable_entity }
+    if annotation.save
+      respond_to do |format|
+        format.html { redirect_to annotation, notice: 'Annotation was successfully created.' }
+        format.json { render json: perspective('annotations/show', annotation: annotation) }
       end
+    else
+      respond_with(perspective('annotations/new', annotation: annotation))
     end
   end
 
   def update
-    respond_to do |format|
-      if @annotation.update(annotation_params)
+    if @annotation.update(annotation_params)
+      respond_to do |format|
         format.html { redirect_to @annotation, notice: 'Annotation was successfully updated.' }
         format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @annotation.errors, status: :unprocessable_entity }
       end
+    else
+      respond_with(perspective('annotations/edit', annotation: @annotation))
     end
   end
 
