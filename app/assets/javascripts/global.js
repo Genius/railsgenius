@@ -13,4 +13,7 @@
       $('#flash-container').empty()
     }
   })
+
+  $(document).on('perspectives:load', function() { $(document).trigger('any-page-load') })
+  $(function() { $(document).trigger('any-page-load') })
 })(jQuery, document, window)

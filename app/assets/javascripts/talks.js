@@ -1,5 +1,5 @@
 (function($, document, window, undefined) {
-  var setup_annotation_click_handlers = function() {
+  var setupAnnotationClickHandlers = function() {
     var $abstract = $('.talk-abstract')
     var $annotation_tooltip = $('#annotation-tooltip')
 
@@ -22,8 +22,7 @@
     })
   }
 
-  $(setup_annotation_click_handlers)
-  $(document).on('perspectives:load', setup_annotation_click_handlers)
+  $(document).on('any-page-load', setupAnnotationClickHandlers)
 
   var getFirstSelection = function() {
     var selection = rangy.getSelection()
@@ -67,7 +66,5 @@
     })
   }
 
-  // TODO: abstract this
-  $(setupCreateNewAnnotationButton)
-  $(document).on('perspectives:load', setupCreateNewAnnotationButton)
+  $(document).on('any-page-load', setupCreateNewAnnotationButton)
 })(jQuery, document, window)
