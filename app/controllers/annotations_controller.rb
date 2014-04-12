@@ -1,5 +1,5 @@
 class AnnotationsController < ApplicationController
-  perspectives_actions only: [:show, :index, :new]
+  perspectives_actions
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy, :tooltip]
   before_action :authenticate_user!, only: [:create, :update]
@@ -17,6 +17,7 @@ class AnnotationsController < ApplicationController
   end
 
   def edit
+    respond_with(perspective('annotations/edit', annotation: @annotation))
   end
 
   def create

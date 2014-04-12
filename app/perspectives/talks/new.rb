@@ -3,5 +3,5 @@ class Talks::New < Perspectives::Base
 
   property :talks_path
 
-  nested 'form', talk: :talk, method: 'post'
+  nested 'form', talk: :talk
 end
