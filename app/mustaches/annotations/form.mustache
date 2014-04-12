@@ -1,0 +1,24 @@
+<form accept-charset="UTF-8" action="{{submit_to}}" method="post">
+  {{{errors}}}
+
+  {{#submit_method}}
+    <input type="hidden" name="_method" value="{{submit_method}}">
+  {{/submit_method}}
+
+  <div><label for="annotation_body">Body</label><br>
+    <textarea id="annotation_body" name="annotation[body]" autofocus rows="10">{{body}}</textarea>
+  </div>
+
+  <div><label for="annotation_talk_id">Talk</label><br>
+    <select name="annotation[talk_id]">
+      <option value=""></option>
+      {{#talks}}
+        <option {{#selected}}SELECTED{{/selected}} value="{{id}}">{{title}}</option>
+      {{/talks}}
+    </select>
+  </div>
+
+  <div class="actions">
+    <input name="commit" type="submit" value="Submit">
+  </div>
+</form>

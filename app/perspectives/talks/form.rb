@@ -5,7 +5,7 @@ class Talks::Form < Perspectives::Base
 
   delegate_property :title, :abstract, :speaker_id, to: :talk
 
-  nested 'errors', talk: :talk
+  nested 'shared/errors', object: :talk
 
   property :talks_path
 
