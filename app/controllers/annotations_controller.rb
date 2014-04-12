@@ -48,7 +48,7 @@ class AnnotationsController < ApplicationController
   def destroy
     @annotation.destroy
     respond_to do |format|
-      format.html { redirect_to annotations_url }
+      format.html { redirect_to annotations_url, notice: "Destroyed Annotation" }
       format.json { head :no_content }
     end
   end

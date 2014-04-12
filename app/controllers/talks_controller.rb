@@ -49,7 +49,7 @@ class TalksController < ApplicationController
   def destroy
     @talk.destroy
     respond_to do |format|
-      format.html { redirect_to talks_url }
+      format.html { redirect_to talks_url, notice: "Destroyed Talk" }
       format.json { head :no_content }
     end
   end
