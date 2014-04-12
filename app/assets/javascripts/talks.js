@@ -1,22 +1,20 @@
 (function($, document, window, undefined) {
   var setup_annotation_click_handlers = function() {
     var $abstract = $('.talk-abstract')
+    var $annotation_tooltip = $('#annotation-tooltip')
 
     $abstract.on('click', 'a[data-id]', function() {
       var $annotation_referent = $(this)
 
       $.get(this.href, function(content) {
-        $('.annotation-tooltip').remove()
-
-        var $content = $(content)
-
-        $content.appendTo($('body')).css({
+        $annotation_tooltip.html(content)
+        $annotation_tooltip.css({
           position: 'absolute',
           top: $annotation_referent.position().top + 'px',
           left: "-10000px"
         }).focus()
 
-        $content.css({left: ($abstract.position().left - $content.outerWidth() - 30) + "px"})
+        $annotation_tooltip.css({left: ($abstract.position().left - $annotation_tooltip.outerWidth() - 30) + "px"}).show()
       })
 
       return false

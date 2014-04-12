@@ -13,10 +13,13 @@ class Annotation < ActiveRecord::Base
   end
 
   def truncated_body
-    if body.length > 100
-      body[0, 100] + '...'
-    else
-      body
-    end
+    b =
+      if body.length > 100
+        body[0, 100] + '...'
+      else
+        body
+      end
+
+    HTML::FullSanitizer.new.sanitize(b).html_safe
   end
 end

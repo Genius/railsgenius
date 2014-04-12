@@ -1,14 +1,11 @@
 class AnnotationsController < ApplicationController
-  perspectives_actions only: :show
+  perspectives_actions only: [:show, :index]
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy, :tooltip]
   before_action :authenticate_user!, only: [:create, :update]
 
   def index
-    @annotations = Annotation.all
-  end
-
-  def tooltip
+    respond_with(perspective('annotations/index', all_annotations: Annotation.all))
   end
 
   def show

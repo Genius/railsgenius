@@ -16,7 +16,7 @@ class Talk < ActiveRecord::Base
         if a['data-id'].blank? || a['data-id'].to_i < 1
           a.swap(a.inner_text)
         else
-          a['href'] = tooltip_annotation_path(id: a['data-id'])
+          a['href'] = annotation_path(id: a['data-id'])
         end
       end
     end.to_html.html_safe
