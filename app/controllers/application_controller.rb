@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_user_params
+  before_action :set_container_classes
 
   layout lambda { |controller| !controller.request.xhr? && 'application' }
 
@@ -31,5 +32,9 @@ class ApplicationController < ActionController::Base
 
   def default_context
     {current_user: current_user}
+  end
+
+  def set_container_classes
+    response.headers['X-Container-Classes'] = "#{controller_name}-#{action_name}"
   end
 end

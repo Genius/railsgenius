@@ -47,7 +47,6 @@
               - else
                 = flash[key]
               - flash.delete(key)
-          #perspectives
-            #main{class: "#{controller_name}-#{action_name}"}
-              = yield
+          #perspectives{class: "#{controller_name}-#{action_name}"}
+            = yield
   = yield(:page_javascript) if content_for? :page_javascript
