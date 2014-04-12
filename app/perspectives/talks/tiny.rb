@@ -8,5 +8,6 @@ module Talks
     property(:path) { talk_path(talk) }
     property(:edit_path) { edit_talk_path(talk) }
     property(:speaker_name) { display_name(talk.speaker) }
+    property(:speaker_href) { user_path(talk.speaker) }
   end
 end
