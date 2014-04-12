@@ -7,6 +7,8 @@ module Talks
 
     property :talks_path
 
+    property(:path) { talk_path(talk) }
+
     property(:edit_path) { edit_talk_path(talk) }
 
     property(:speaker_name) { display_name(talk.speaker) }
@@ -18,6 +20,10 @@ module Talks
 
     property(:edit) do
       talk.created_by == current_user || current_user.try(:admin?)
+    end
+
+    property(:create_annotation_path) do
+      talk_annotations_path(id: talk.id)
     end
   end
 end

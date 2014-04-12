@@ -1,7 +1,7 @@
 module Annotations
   class Show < Perspectives::Base
     param :annotation
-    delegate_property :referent, to: :annotation
+    delegate_property :id, :referent, to: :annotation
 
     delegate :talk, to: :annotation
     delegate_property :title, to: :talk, prefix: true

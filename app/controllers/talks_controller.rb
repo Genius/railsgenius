@@ -39,7 +39,7 @@ class TalksController < ApplicationController
     if @talk.update(talk_params)
       respond_to do |format|
         format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: perspective('talks/show', talk: @talk) }
       end
     else
       respond_with(perspective('talks/edit', talk: @talk))

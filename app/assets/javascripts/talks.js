@@ -22,8 +22,6 @@
     })
   }
 
-  $(document).on('any-page-load', setupAnnotationClickHandlers)
-
   var getFirstSelection = function() {
     var selection = rangy.getSelection()
     return selection.rangeCount ? selection.getRangeAt(0) : null
@@ -59,12 +57,33 @@
     })
 
     $('#annotate-button').mousedown(function() {
-      var $this = $(this)
-      $this.attr('data-loading', true)
+      var $annotate_button = $(this)
+      $annotate_button.attr('data-loading', true)
+
+      $.ajax({
+        type: 'POST',
+        url: $annotate_button.attr('data-create-annotation-path'),
+        data: { annotation: {body: ''} },
+        dataType: 'json',
+      }).success(function(annotation) {
+        $('a[data-pending]').attr('data-id', annotation.id).removeAttr('data-pending')
+
+        $.ajax({
+          type: 'POST',
+          dataType: 'json',
+          url: $annotate_button.closest('.talk').attr('data-update-talk-path'),
+          data: { talk: { 'abstract': $('.talk-abstract').html() }, '_method': 'PATCH' }
+        }).success(function(talk) {
+          $annotate_button.removeAttr('data-loading').hide()
+
+          $('.talk-abstract').html(talk.abstract)
+        })
+      })
 
       return false
     })
   }
 
   $(document).on('any-page-load', setupCreateNewAnnotationButton)
+  $(document).on('any-page-load', setupAnnotationClickHandlers)
 })(jQuery, document, window)

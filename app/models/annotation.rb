@@ -2,10 +2,14 @@ class Annotation < ActiveRecord::Base
   belongs_to :created_by, class_name: 'User'
   belongs_to :talk
 
-  validates :body, :talk, :created_by, presence: true
+  validates :talk, :created_by, presence: true
 
   def set_referent(abstract_html = talk.abstract_as_html)
     self.referent = Nokogiri::HTML(talk.abstract_as_html).at("a[data-id=#{id.to_s.inspect}]").try(:inner_text)
+  end
+
+  def body
+    super.to_s
   end
 
   def body_as_html

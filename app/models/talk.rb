@@ -12,7 +12,7 @@ class Talk < ActiveRecord::Base
 
   def abstract_as_html
     Nokogiri::HTML(HTML::Sanitizer.new.sanitize(abstract)).tap do |doc|
-      doc.css('a[data-id]').each do |a|
+      doc.css('a').each do |a|
         if a['data-id'].blank? || a['data-id'].to_i < 1
           a.swap(a.inner_text)
         else

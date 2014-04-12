@@ -24,6 +24,10 @@ class AnnotationsController < ApplicationController
     annotation = Annotation.new(annotation_params)
     annotation.created_by = current_user
 
+    if params[:id]
+      annotation.talk_id = params[:id]
+    end
+
     if annotation.save
       respond_to do |format|
         format.html { redirect_to annotation, notice: 'Annotation was successfully created.' }

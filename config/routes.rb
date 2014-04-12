@@ -8,6 +8,7 @@ RapgeniusLite::Application.routes.draw do
   resources :talks do
     member do
       resources :contributors, only: :index
+      resources :annotations, only: :create, as: 'talk_annotations'
     end
   end
 

@@ -1,19 +1,21 @@
-<dl>
-  <dt>Speaker:</dt>
-  <dd>{{{speaker_avatar}}}<a href="{{speaker_path}}">{{speaker_name}}</a></dd>
-  <dt>Title:</dt>
-  <dd>{{title}}</dd>
-  <dt>Abstract:</dt>
-  <dd class="talk-abstract">{{{abstract}}}</dd>
-</dl>
+<div class="talk" data-update-path="{{path}}">
+  <dl>
+    <dt>Speaker:</dt>
+    <dd>{{{speaker_avatar}}}<a href="{{speaker_path}}">{{speaker_name}}</a></dd>
+    <dt>Title:</dt>
+    <dd>{{title}}</dd>
+    <dt>Abstract:</dt>
+    <dd class="talk-abstract">{{{abstract}}}</dd>
+  </dl>
 
-{{#edit}}
-  <a href="{{edit_path}}">Edit</a>
-{{/edit}}
+  {{#edit}}
+    <a href="{{edit_path}}">Edit</a>
+  {{/edit}}
 
-<a href="{{talks_path}}">Back</a>
-<div id="annotation-tooltip"></div>
-<button type="button" class="btn btn-success" id="annotate-button">
-  <span class="text">Annotate</span>
-  <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
-</button>
+  <a href="{{talks_path}}">Back</a>
+  <div id="annotation-tooltip"></div>
+  <button type="button" class="btn btn-success" id="annotate-button" data-create-annotation-path="{{create_annotation_path}}">
+    <span class="text">Annotate</span>
+    <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+  </button>
+</div>
