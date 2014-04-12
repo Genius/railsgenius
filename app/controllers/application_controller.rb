@@ -35,6 +35,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_container_classes
-    response.headers['X-Container-Classes'] = "#{controller_name}-#{action_name}"
+    @container_classes = response.headers['X-Container-Classes'] = "#{controller_name}-#{action_name}"
+  end
+
+  def set_flash
+    if perspectives_enabled_action?
+      response.headers['X-Flash-Perspective'] = perspective('flash_messages', flash: flash).to_json
+    end
   end
 end

@@ -1,0 +1,9 @@
+{{#flash_types}}
+  <div class="alert alert-{{key}}">
+    <a class="close" href="#" data-dismiss="alert">x</a>
+    <h4 class="alert-heading">{{display_key}}</h4>
+    {{#messages}}
+      {{msg}}<br>
+    {{/messages}}
+  </div>
+{{/flash_types}}

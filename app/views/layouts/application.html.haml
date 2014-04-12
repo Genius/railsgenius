@@ -36,17 +36,8 @@
     .container-fluid
       .row-fluid
         .span8.offset3
-          - flash.keys.each do |key|
-            .alert{ class: "alert-#{key}" }
-              %a.close{ href: '#', "data-dismiss" => "alert" } x
-              %h4.alert-heading= key.capitalize
-              - if flash[key].respond_to?(:each)
-                - flash[key].each do |msg|
-                  = msg
-                  %br
-              - else
-                = flash[key]
-              - flash.delete(key)
-          #perspectives{class: "#{controller_name}-#{action_name}"}
+          #flash-container
+            = perspective('flash_messages', flash: flash)
+          #perspectives{class: @container_classes}
             = yield
   = yield(:page_javascript) if content_for? :page_javascript

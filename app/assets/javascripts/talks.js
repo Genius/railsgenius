@@ -23,11 +23,4 @@
 
   $(setup_annotation_click_handlers)
   $(document).on('perspectives:load', setup_annotation_click_handlers)
-  $(document).on('perspectives:load', function(event, xhr) {
-    $('#perspectives')[0].className = xhr.getResponseHeader('x-container-classes')
-  })
-
-  $(function() {
-    $(document).perspectives('a', '#perspectives')
-  })
 })(jQuery, document, window)
