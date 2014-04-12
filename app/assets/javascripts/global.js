@@ -1,6 +1,6 @@
 (function($, document, window, undefined) {
   $(function() {
-    $(document).perspectives('a', '#perspectives')
+    $(document).perspectives('a:not([data-no-perspectives])', '#perspectives')
   })
 
   $(document).on('perspectives:load', function(event, xhr) {

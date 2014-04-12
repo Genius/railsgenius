@@ -2,12 +2,39 @@
   textarea
     width: 60%
 
-.talk-abstract
-  a
-    background-color: rgba(255,191,13,0.188)
-    color: #333333
-    padding: 2px
+@mixin annotated_text
+  background-color: rgba(255,191,13,0.188)
+  color: #333333
+  padding: 0px
 
-    &:hover
-      text-decoration: none
-      background-color: rgba(255,195,28,0.6)
+  &:hover
+    text-decoration: none
+    background-color: rgba(255,195,28,0.6)
+
+.talk-abstract
+  ::selection
+    @include annotated_text
+
+  ::-moz-selection
+    @include annotated_text
+
+  a
+    @include annotated_text
+
+#annotate-button
+  display: none
+  position: absolute
+  width: 100px
+
+  .text
+    display: inline
+
+  .spinner
+    display: none
+
+  &[data-loading] .spinner
+    display: inline-block
+    cursor: progress
+
+  &[data-loading] .text
+    display: none

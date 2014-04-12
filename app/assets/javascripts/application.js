@@ -15,6 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require mustache-0.8.1
+//= require rangy-1.2.3/uncompressed/rangy-core
+//= require jquery.ba-dotimeout-1.0
 //= require_tree ../../mustaches
 //= require perspectives
 //= require_tree .
