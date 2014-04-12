@@ -22,28 +22,27 @@ class TalksController < ApplicationController
   end
 
   def create
-    @talk = Talk.new(talk_params)
-    @talk.created_by = current_user
+    talk = Talk.new(talk_params)
+    talk.created_by = current_user
 
-    respond_to do |format|
-      if @talk.save
-        format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @talk }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
+    if talk.save
+      respond_to do |format|
+        format.html { redirect_to talk, notice: 'Talk was successfully created.' }
+        format.json { render json: perspective('talks/show', talk: talk) }
       end
+    else
+      respond_with(perspective('talks/new', talk: talk))
     end
   end
 
   def update
-    respond_to do |format|
-      if @talk.update(talk_params)
+    if @talk.update(talk_params)
+      respond_to do |format|
         format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
         format.json { head :no_content }
-      else
-        respond_with(perspective('talks/edit', talk: @talk))
       end
+    else
+      respond_with(perspective('talks/edit', talk: @talk))
     end
   end
 
