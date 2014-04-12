@@ -1,5 +1,5 @@
 class AnnotationsController < ApplicationController
-  perspectives_actions
+  perspectives_actions only: :show
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy, :tooltip]
   before_action :authenticate_user!, only: [:create, :update]
