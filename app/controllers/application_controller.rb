@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_user_params
   before_action :set_container_classes
+  after_action :allow_iframe
 
   layout lambda { |controller| !controller.request.xhr? && 'application' }
 
@@ -42,5 +43,9 @@ class ApplicationController < ActionController::Base
     if perspectives_enabled_action?
       response.headers['X-Flash-Perspective'] = perspective('flash_messages', flash: flash).to_json
     end
+  end
+
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
   end
 end
