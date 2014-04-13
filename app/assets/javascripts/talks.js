@@ -13,7 +13,18 @@
       left: "-10000px"
     }).focus()
 
-    $annotationTooltip.css({left: ($abstract.position().left - $annotationTooltip.outerWidth() - 30) + "px"}).show()
+    var idealLeftPositionIfEnoughSpace = $abstract.position().left - $annotationTooltip.outerWidth() - 30
+    var minLeftEdgeBuffer = 20
+
+    var left = idealLeftPositionIfEnoughSpace
+    var top = $annotationReferent.position().top
+
+    if (idealLeftPositionIfEnoughSpace < minLeftEdgeBuffer) {
+      left = minLeftEdgeBuffer
+      top += 50
+    }
+
+    $annotationTooltip.css({left: left + "px", top: top + 'px'}).show()
   }
 
   var getFirstSelection = function() {
@@ -81,4 +92,6 @@
 
   $(document).on('any-page-load', setupCreateNewAnnotationButton)
   $(document).on('any-page-load', positionAnnotationTooltip)
+
+  $(window).resize(function() { $.doTimeout('position-tooltip', 50, positionAnnotationTooltip) })
 })(jQuery, document, window)
