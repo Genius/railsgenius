@@ -40,6 +40,7 @@
 
         var selection = getFirstSelection()
         if (!selection || !$.trim(selection.toString()).length) return
+        if ($('<div>').append(selection.toHtml()).find('a[data-id]').length) return alert("Sorry, you can only annotate unannotated text!")
 
         selection.surroundContents($('<a>', {'data-pending': 'true', 'data-no-perspectives': true})[0])
         $('#annotate-button').show().css({top: e.pageY - 50, left: e.pageX})
