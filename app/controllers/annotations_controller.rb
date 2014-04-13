@@ -1,11 +1,11 @@
 class AnnotationsController < ApplicationController
   perspectives_actions
 
-  before_action :set_annotation, only: [:show, :edit, :update, :destroy, :tooltip]
+  before_action :set_annotation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update]
 
   def index
-    respond_with(perspective('annotations/index', all_annotations: Annotation.all))
+    respond_with(perspective('annotations/index', all_annotations: annotations_scope.all))
   end
 
   def show
@@ -13,7 +13,7 @@ class AnnotationsController < ApplicationController
   end
 
   def new
-    respond_with(perspective('annotations/new', annotation: Annotation.new))
+    respond_with(perspective('annotations/new', annotation: annotations_scope.new))
   end
 
   def edit
@@ -21,12 +21,8 @@ class AnnotationsController < ApplicationController
   end
 
   def create
-    annotation = Annotation.new(annotation_params)
+    annotation = annotations_scope.new(annotation_params)
     annotation.created_by = current_user
-
-    if params[:id]
-      annotation.talk_id = params[:id]
-    end
 
     if annotation.save
       respond_to do |format|
@@ -59,8 +55,16 @@ class AnnotationsController < ApplicationController
 
   private
 
+  def annotations_scope
+    if params[:talk_id]
+      Talk.find(params[:talk_id]).annotations
+    else
+      Annotation
+    end
+  end
+
   def set_annotation
-    @annotation = Annotation.find(params[:id])
+    @annotation = annotations_scope.find(params[:id])
   end
 
   def annotation_params

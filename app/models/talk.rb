@@ -11,9 +11,11 @@ class Talk < ActiveRecord::Base
   after_save :set_referents, if: :abstract_changed?
 
   def abstract_as_html
+    annos = annotations.index_by(&:id)
+
     Nokogiri::HTML(HTML::Sanitizer.new.sanitize(abstract)).tap do |doc|
       doc.css('a').each do |a|
-        if a['data-id'].blank? || a['data-id'].to_i < 1
+        if annos.exclude?(a['data-id'].to_i)
           a.swap(a.inner_text)
         else
           a['href'] = annotation_path(id: a['data-id'])

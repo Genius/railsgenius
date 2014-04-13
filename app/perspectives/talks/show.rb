@@ -23,7 +23,7 @@ module Talks
     end
 
     property(:create_annotation_path) do
-      talk_annotations_path(id: talk.id)
+      talk_annotations_path(talk_id: talk.id)
     end
   end
 end
