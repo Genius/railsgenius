@@ -13,16 +13,23 @@ class Talk < ActiveRecord::Base
   def abstract_as_html
     annos = annotations.index_by(&:id)
 
-    Nokogiri::HTML(HTML::Sanitizer.new.sanitize(abstract)).tap do |doc|
+    Nokogiri::HTML(abstract_sanitizer.sanitize(abstract)).tap do |doc|
       doc.css('a').each do |a|
         if annos.exclude?(a['data-id'].to_i)
           a.swap(a.inner_text)
         else
-          a['href'] = annotation_path(id: a['data-id'])
+          a['href'] = expanded_annotation_talk_path(id: id, annotation_id: a['data-id'])
         end
       end
     end.to_html.html_safe
   end
+
+  def self.abstract_sanitizer
+    @abstract_sanitizer ||= HTML::WhiteListSanitizer.new.tap do |sanitizer|
+      sanitizer.allowed_attributes << 'data-id'
+    end
+  end
+  delegate :abstract_sanitizer, to: 'self.class'
 
   def set_referents
     html = abstract_as_html

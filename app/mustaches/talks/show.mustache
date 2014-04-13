@@ -13,7 +13,11 @@
   {{/edit}}
 
   <a href="{{talks_path}}">Back</a>
-  <div id="annotation-tooltip"></div>
+  <div id="annotation-tooltip">
+    {{#expanded_annotation?}}
+      {{{annotation}}}
+    {{/expanded_annotation?}}
+  </div>
   <button type="button" class="btn btn-success" id="annotate-button" data-create-annotation-path="{{create_annotation_path}}">
     <span class="text">Annotate</span>
     <span class="spinner"><i class="icon-spin icon-refresh"></i></span>

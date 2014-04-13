@@ -1,25 +1,19 @@
 (function($, document, window, undefined) {
-  var setupAnnotationClickHandlers = function() {
+  var positionAnnotationTooltip = function() {
     var $abstract = $('.talk-abstract')
-    var $annotation_tooltip = $('#annotation-tooltip')
+    var $annotationTooltip = $('#annotation-tooltip')
 
-    $abstract.on('click', 'a[data-id]', function() {
-      if ($('#annotate-button[data-loading]').length) return false
-      var $annotation_referent = $(this)
+    var $expandedAnnotation = $annotationTooltip.find('.annotation')
+    if (!$expandedAnnotation.length) return
+    var $annotationReferent = $abstract.find('a[data-id=' + $expandedAnnotation.attr('data-id') + ']')
 
-      $.get(this.href, function(content) {
-        $annotation_tooltip.html(content)
-        $annotation_tooltip.css({
-          position: 'absolute',
-          top: $annotation_referent.position().top + 'px',
-          left: "-10000px"
-        }).focus()
+    $annotationTooltip.css({
+      position: 'absolute',
+      top: $annotationReferent.position().top + 'px',
+      left: "-10000px"
+    }).focus()
 
-        $annotation_tooltip.css({left: ($abstract.position().left - $annotation_tooltip.outerWidth() - 30) + "px"}).show()
-      })
-
-      return false
-    })
+    $annotationTooltip.css({left: ($abstract.position().left - $annotationTooltip.outerWidth() - 30) + "px"}).show()
   }
 
   var getFirstSelection = function() {
@@ -86,5 +80,5 @@
   }
 
   $(document).on('any-page-load', setupCreateNewAnnotationButton)
-  $(document).on('any-page-load', setupAnnotationClickHandlers)
+  $(document).on('any-page-load', positionAnnotationTooltip)
 })(jQuery, document, window)
