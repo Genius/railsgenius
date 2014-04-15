@@ -19,7 +19,7 @@ class Talk < ActiveRecord::Base
           a.swap(a.inner_text)
         else
           a['href'] = expanded_annotation_talk_path(id: id, annotation_id: a['data-id'])
-          a['data-perspectives-replace'] = '#annotation-tooltip'
+          a['data-perspectives-incremental-replace'] = '#annotation-tooltip'
           a['data-perspectives-incremental-href'] = annotation_path(a['data-id'])
         end
       end
