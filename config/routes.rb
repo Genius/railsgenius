@@ -11,6 +11,7 @@ RapgeniusLite::Application.routes.draw do
     member do
       resources :contributors, only: :index
       get 'annotations/:annotation_id', action: :show, as: 'expanded_annotation'
+      get 'annotations/:annotation_id/edit', action: :show, as: 'expanded_annotation_edit', edit: true
     end
   end
 

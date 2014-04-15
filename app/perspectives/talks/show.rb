@@ -3,7 +3,7 @@ module Talks
     include Users::Helpers
 
     param :talk
-    param :expanded_annotation, allow_nil: true
+    param :expanded_annotation, :edit_annotation, allow_nil: true
     property(:expanded_annotation?) { !!expanded_annotation }
     delegate_property :title, to: :talk
 
@@ -28,9 +28,15 @@ module Talks
       talk_annotations_path(talk_id: talk.id)
     end
 
-    nested 'annotations/show',
-      locals: { annotation: :expanded_annotation },
-      property: :annotation,
-      if: :expanded_annotation
+    def annotation
+      return unless expanded_annotation?
+
+      if edit_annotation
+        Annotations::Edit.new(context, annotation: expanded_annotation)
+      else
+        Annotations::Show.new(context, annotation: expanded_annotation)
+      end
+    end
+    nested :annotation
   end
 end

@@ -15,6 +15,7 @@ class TalksController < ApplicationController
     respond_with(perspective(
       'talks/show',
       talk: @talk,
+      edit_annotation: params[:edit],
       expanded_annotation: expanded_annotation))
   end
 

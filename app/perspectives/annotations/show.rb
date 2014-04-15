@@ -11,6 +11,7 @@ module Annotations
 
     property :annotations_path
 
-    property(:edit) { edit_annotation_path(annotation) }
+    property(:edit_href) { expanded_annotation_edit_talk_path(talk, annotation) }
+    property(:incremental_href) { edit_annotation_path(annotation) }
   end
 end
