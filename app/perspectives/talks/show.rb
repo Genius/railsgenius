@@ -32,9 +32,9 @@ module Talks
       return unless expanded_annotation?
 
       if edit_annotation
-        Annotations::Edit.new(context, annotation: expanded_annotation)
+        Annotations::Edit.new(context, annotation: expanded_annotation, embedded: true)
       else
-        Annotations::Show.new(context, annotation: expanded_annotation)
+        Annotations::Show.new(context, annotation: expanded_annotation, embedded: true)
       end
     end
     nested :annotation

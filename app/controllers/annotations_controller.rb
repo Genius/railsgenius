@@ -17,7 +17,7 @@ class AnnotationsController < ApplicationController
   end
 
   def edit
-    respond_with(perspective('annotations/edit', annotation: @annotation))
+    respond_with(perspective('annotations/edit', annotation: @annotation, embedded: params[:embedded]))
   end
 
   def create
