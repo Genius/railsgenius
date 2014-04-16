@@ -77,7 +77,7 @@
         $.ajax({
           type: 'POST',
           dataType: 'json',
-          url: $annotate_button.closest('.talk').attr('data-update-talk-path'),
+          url: $annotate_button.closest('.talk').attr('data-update-path'),
           data: { talk: { 'abstract': $('.talk-abstract').html() }, '_method': 'PATCH' }
         }).success(function(talk) {
           $annotate_button.removeAttr('data-loading').hide()
