@@ -10,13 +10,7 @@ class TalksController < ApplicationController
   end
 
   def show
-    expanded_annotation = @talk.annotations.find(params[:annotation_id]) if params[:annotation_id]
-
-    respond_with(perspective(
-      'talks/show',
-      talk: @talk,
-      edit_annotation: params[:edit],
-      expanded_annotation: expanded_annotation))
+    respond_with(perspective('talks/show', talk: @talk))
   end
 
   def new

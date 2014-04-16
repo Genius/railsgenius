@@ -1,5 +1,9 @@
 class AnnotationsController < ApplicationController
   perspectives_actions
+  wrapped_with 'talks/show',
+    if: lambda { |c| c.params[:talk_id].present? },
+    only: [:show, :edit],
+    args: lambda { |controller, perspective| { talk: Talk.find(controller.params[:talk_id]), expanded_annotation: perspective } }
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update]
@@ -17,7 +21,7 @@ class AnnotationsController < ApplicationController
   end
 
   def edit
-    respond_with(perspective('annotations/edit', annotation: @annotation, embedded: params[:embedded]))
+    respond_with(perspective('annotations/edit', annotation: @annotation))
   end
 
   def create
