@@ -1,6 +1,6 @@
 class AnnotationsController < ApplicationController
   perspectives_actions
-  wrapped_with 'talks/show', only: [:show, :edit], as: :expanded_annotation
+  wrapped_with 'talks/show', only: [:show, :edit]
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update]
