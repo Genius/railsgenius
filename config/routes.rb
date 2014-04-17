@@ -6,7 +6,7 @@ RapgeniusLite::Application.routes.draw do
   resources :users
 
   resources :talks do
-    resources :annotations, only: [:create, :show, :edit]
+    resources :annotations, only: [:create, :show, :edit, :update]
 
     member do
       resources :contributors, only: :index

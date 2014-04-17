@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_user_params
   before_action :set_container_classes
-  after_action :allow_iframe
+  after_action :allow_iframe, :set_flash
 
   layout lambda { |controller| !controller.request.xhr? && 'application' }
 

@@ -19,7 +19,7 @@ class Talk < ActiveRecord::Base
           a.swap(a.inner_text)
         else
           a['href'] = talk_annotation_path(talk_id: id, id: a['data-id'])
-          a['data-perspectives-container'] = '#annotation-tooltip'
+          a['data-perspectives-target'] = '#annotation-tooltip'
         end
       end
     end.to_html.html_safe

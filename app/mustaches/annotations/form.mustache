@@ -1,4 +1,4 @@
-<form accept-charset="UTF-8" action="{{submit_to}}" method="post">
+<form accept-charset="UTF-8" data-remote="true" data-type="json" data-perspectives-target="#annotation-tooltip" action="{{submit_to}}" method="post">
   {{{errors}}}
 
   {{#submit_method}}
@@ -19,6 +19,6 @@
   </div>
 
   <div class="actions">
-    <input name="commit" type="submit" value="Submit">
+    <input name="commit" type="submit" value="Submit" data-disable-with="Working...">
   </div>
 </form>

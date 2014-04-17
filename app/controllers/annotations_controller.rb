@@ -1,6 +1,6 @@
 class AnnotationsController < ApplicationController
   perspectives_actions
-  wrapped_with 'talks/show', only: [:show, :edit]
+  wrapped_with 'talks/show', only: [:show, :edit, :update]
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update]
@@ -37,9 +37,11 @@ class AnnotationsController < ApplicationController
 
   def update
     if @annotation.update(annotation_params)
+      flash[:notice] = 'Annotation was successfully updated.'
+
       respond_to do |format|
-        format.html { redirect_to @annotation, notice: 'Annotation was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @annotation }
+        format.json { render json: perspective('annotations/show', annotation: @annotation) }
       end
     else
       respond_with(perspective('annotations/edit', annotation: @annotation))

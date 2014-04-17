@@ -8,7 +8,7 @@
 
     var flash = xhr.getResponseHeader('x-flash-perspective')
     if (flash && flash.length) {
-      $('#flash-container').html(LP.render(flash))
+      $('#flash-container').html(LP.render(JSON.parse(flash)))
     } else {
       $('#flash-container').empty()
     }
