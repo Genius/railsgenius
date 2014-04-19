@@ -28,7 +28,7 @@ class TalksController < ApplicationController
     if talk.save
       respond_to do |format|
         format.html { redirect_to talk, notice: 'Talk was successfully created.' }
-        format.json { render json: perspective('talks/show', talk: talk) }
+        format.json { render json: perspective('talks/show', talk: talk), status: :created, location: talk }
       end
     else
       respond_with(perspective('talks/new', talk: talk))

@@ -1,4 +1,4 @@
-<form accept-charset="UTF-8" action="{{submit_to}}" class="{{form_class}}" id="{{form_id}}" method="post">
+<form accept-charset="UTF-8" action="{{submit_to}}" class="{{form_class}}" id="{{form_id}}" method="post" data-type="json" data-remote="true">
   {{{errors}}}
 
   {{#submit_method}}
@@ -22,6 +22,6 @@
   </div>
 
   <div class="actions">
-    <input name="commit" type="submit" value="Submit">
+    <input name="commit" type="submit" value="Submit" data-disable-with="Working...">
   </div>
 </form>
