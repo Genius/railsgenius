@@ -82,14 +82,14 @@
         }).success(function(talk_json, status, xhr) {
           $annotateButton.removeAttr('data-loading').hide()
 
-          LP.renderResponse({
+          Perspectives.renderResponse({
             json: talk_json,
             status: status,
             xhr: xhr,
             noPushState: true
           })
 
-          LP.navigate({
+          Perspectives.navigate({
             href: annotation.edit_href,
             container: annotation.perspectives_target
           })
