@@ -13,5 +13,6 @@ module Annotations
     property :annotations_path
 
     property(:edit_href) { edit_talk_annotation_path(talk, annotation) }
+    property(:perspectives_target) { '#annotation-tooltip' }
   end
 end

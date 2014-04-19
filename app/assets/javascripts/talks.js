@@ -33,10 +33,10 @@
   }
 
   var setupCreateNewAnnotationButton = function() {
-    var $talk_abstract = $('.talk-abstract')
-    if (!$talk_abstract.length) return
+    var $talkAbstract = $('.talk-abstract')
+    if (!$talkAbstract.length) return
 
-    $talk_abstract.on('mouseup', function(e) {
+    $talkAbstract.off('mouseup.annotate').on('mouseup.annotate', function(e) {
       var $this = $(this)
       if (e.which != 1) return
 
@@ -52,23 +52,23 @@
       })
     })
 
-    $(document).on('mousedown', function() {
-      var $annotate_button = $('#annotate-button:not([data-loading])')
+    $(document).off('mousedown.annotate').on('mousedown.annotate', function() {
+      var $annotateButton = $('#annotate-button:not([data-loading])')
 
-      if ($annotate_button.length) {
-        $annotate_button.hide()
-        var $pending_a = $talk_abstract.find('a[data-pending]')
-        $pending_a.replaceWith($pending_a.html())
+      if ($annotateButton.length) {
+        $annotateButton.hide()
+        var $pendingA = $talkAbstract.find('a[data-pending]')
+        $pendingA.replaceWith($pendingA.html())
       }
     })
 
-    $('#annotate-button').mousedown(function() {
-      var $annotate_button = $(this)
-      $annotate_button.attr('data-loading', true)
+    $('#annotate-button').off('mousedown.annotate').on('mousedown.annotate', function() {
+      var $annotateButton = $(this)
+      $annotateButton.attr('data-loading', true)
 
       $.ajax({
         type: 'POST',
-        url: $annotate_button.attr('data-create-annotation-path'),
+        url: $annotateButton.attr('data-create-annotation-path'),
         data: { annotation: {body: ''} },
         dataType: 'json',
       }).success(function(annotation) {
@@ -77,12 +77,22 @@
         $.ajax({
           type: 'POST',
           dataType: 'json',
-          url: $annotate_button.closest('.talk').attr('data-update-path'),
+          url: $annotateButton.closest('.talk').attr('data-update-path'),
           data: { talk: { 'abstract': $('.talk-abstract').html() }, '_method': 'PATCH' }
-        }).success(function(talk) {
-          $annotate_button.removeAttr('data-loading').hide()
+        }).success(function(talk_json, status, xhr) {
+          $annotateButton.removeAttr('data-loading').hide()
 
-          $('.talk-abstract').html(talk.abstract)
+          LP.renderResponse({
+            json: talk_json,
+            status: status,
+            xhr: xhr,
+            noPushState: true
+          })
+
+          LP.navigate({
+            href: annotation.edit_href,
+            container: annotation.perspectives_target
+          })
         })
       })
 
