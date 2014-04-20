@@ -6,7 +6,5 @@ class Annotations::Edit < Perspectives::Base
     talk_annotation_path(annotation.talk, annotation)
   end
 
-  property :annotations_path
-
   nested 'form', annotation: :annotation
 end

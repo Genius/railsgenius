@@ -12,11 +12,4 @@ RapgeniusLite::Application.routes.draw do
       resources :contributors, only: :index
     end
   end
-
-  get '/:id', to: 'annotations#show', constraints: { id: /\d+/ }
-  resources :annotations do
-    member do
-      get 'tooltip'
-    end
-  end
 end
