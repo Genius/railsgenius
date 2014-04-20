@@ -1,1 +1,15 @@
-%h1 Hello, RailsGenius!
+%h1 Hey!
+
+%p
+  Rails Genius™ is an example application that I (Andrew Warner) built for RailsConf 2014, to demonstrate "Perspectives",
+  a new way of building rich client applications with Rails. Head over to
+  = link_to 'my talk', talk_path(Talk.find_by_id(1)), :'data-no-perspectives' => true, target: '_blank'
+  to check out a good example of an annotated talk on Rails Genius. For more information about building apps using Perspectives,
+  check out
+  = link_to 'the github page', 'https://github.com/RapGenius/perspectives', :'data-no-perspectives' => true, target: '_blank'
+
+%p
+  Also, be sure to follow me on twitter, at
+  = link_to '@wwarner', 'https://twitter.com/wwarner', :'data-no-perspectives' => true, target: '_blank'
+  , and follow Rap Genius at
+  = link_to '@RapGenius', 'https://twitter.com/RapGenius', :'data-no-perspectives' => true, target: '_blank'
