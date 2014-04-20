@@ -17,5 +17,6 @@
 //= require rangy-1.2.3/uncompressed/rangy-core
 //= require jquery.ba-dotimeout-1.0
 //= require_tree ../../mustaches
+//= require perspectives_views
 //= require perspectives
 //= require_tree .
