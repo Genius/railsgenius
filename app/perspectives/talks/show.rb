@@ -6,6 +6,8 @@ module Talks
     param :annotation, allow_nil: true
     nested :annotation
 
+    cache { talk }
+
     property(:expanded_annotation?) { !!annotation }
 
     delegate_property :title, to: :talk

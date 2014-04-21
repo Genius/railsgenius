@@ -2,6 +2,8 @@ module Annotations
   class Show < Perspectives::Base
     param :annotation
 
+    cache { annotation }
+
     delegate_property :id, :referent, to: :annotation
 
     delegate :talk, to: :annotation
