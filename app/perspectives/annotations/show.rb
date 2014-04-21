@@ -10,7 +10,14 @@ module Annotations
 
     property(:body) { annotation.body_as_html }
 
+    property(:edit) do
+      annotation.created_by == current_user || current_user.try(:admin?)
+    end
+
+    property(:destroy) { edit }
+
     property(:edit_href) { edit_talk_annotation_path(talk, annotation) }
+    property(:annotation_href) { talk_annotation_path(talk, annotation) }
     property(:perspectives_target) { '#annotation-tooltip' }
   end
 end

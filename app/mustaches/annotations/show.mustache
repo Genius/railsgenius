@@ -6,5 +6,12 @@
     {{{body}}}
   </p>
 
-  <a href="{{edit_href}}" data-perspectives-target="{{perspectives_target}}">Edit</a>
+  {{#edit}}
+    <a href="{{edit_href}}" data-perspectives-target="{{perspectives_target}}">Edit</a>
+  {{/edit}}
+
+  {{#destroy}}
+    <br>
+    <a href="{{annotation_href}}" data-method="delete" data-confirm="Are you sure?">Destroy</a>
+  {{/destroy}}
 </div>
