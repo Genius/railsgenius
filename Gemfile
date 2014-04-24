@@ -6,7 +6,7 @@ gem "decent_exposure"
 gem "devise"
 gem "haml"
 gem "haml-rails"
-gem "perspectives", path: '../perspectives'
+gem "perspectives"
 gem "mustache"
 gem "nokogiri"
 gem "pg"
