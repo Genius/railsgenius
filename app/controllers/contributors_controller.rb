@@ -1,5 +1,5 @@
 class ContributorsController < ApplicationController
-  perspective_actions
+  perspectives_actions
 
   def index
     talk = Talk.find(params[:id])
