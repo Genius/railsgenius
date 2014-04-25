@@ -5,10 +5,6 @@ class AnnotationsController < ApplicationController
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
-  def index
-    respond_with(perspective('annotations/index', all_annotations: annotations_scope.all))
-  end
-
   def show
     respond_with(perspective('annotations/show', annotation: @annotation))
   end
