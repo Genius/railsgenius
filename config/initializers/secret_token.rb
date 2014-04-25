@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-RapgeniusLite::Application.config.secret_key_base = 'f0d087095e937b54b83e382944e106dbb0692f6dd37c79fc0942e1d0add162104e74552f5773e513a9aa0a86540ea52cd7215a4e3aa8cd6e11207b7ff1b786cc'
+RapgeniusLite::Application.config.secret_key_base = ENV.fetch('SECRET_TOKEN')
