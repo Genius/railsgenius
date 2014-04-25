@@ -7,5 +7,7 @@ module Talks
       property: :talks
 
     property :new_talk_path
+
+    property(:create_new_talk) { user_signed_in? }
   end
 end

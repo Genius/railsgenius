@@ -17,8 +17,6 @@ module Users
 
     property(:edit_path) { edit_user_path(user) }
 
-    property(:go_back_path) { users_path }
-
     property(:user_avatar) do
       avatar(user)
     end

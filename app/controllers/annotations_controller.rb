@@ -3,7 +3,7 @@ class AnnotationsController < ApplicationController
   wrapped_with 'talks/show', only: [:show, :edit, :update]
 
   before_action :set_annotation, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :update]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
     respond_with(perspective('annotations/index', all_annotations: annotations_scope.all))

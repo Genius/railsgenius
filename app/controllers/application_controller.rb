@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_context
-    {current_user: current_user}
+    {current_user: current_user, user_signed_in?: user_signed_in?}
   end
 
   def set_container_classes

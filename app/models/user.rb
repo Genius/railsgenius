@@ -1,8 +1,15 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  #
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def self.disable_signup?
+    !!ENV['DISABLE_SIGNUP']
+  end
+
+  devise(:registerable) unless disable_signup?
 
   GRAVATAR_URL = 'http://www.gravatar.com/avatar/'
 

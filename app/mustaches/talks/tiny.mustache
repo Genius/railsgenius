@@ -1,6 +1,6 @@
 <tr>
   <td><a href="{{speaker_href}}">{{speaker_name}}</a></td>
   <td><a href="{{path}}">{{title}}</a></td>
-  <td><a href="{{edit_path}}">Edit</a></td>
-  <td><a href="{{path}}" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Destroy</a>
+  <td>{{#modify_talk}}<a href="{{edit_path}}">Edit</a>{{/modify_talk}}</td>
+  <td>{{#modify_talk}}<a href="{{path}}" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Destroy</a>{{/modify_talk}}</td>
 </tr>

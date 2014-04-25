@@ -3,7 +3,7 @@ RapgeniusLite::Application.routes.draw do
 
   get 'users/edit', to: 'users#edit', as: :edit_current_user
   devise_for :users
-  resources :users
+  resources :users, only: [:show, :edit, :update]
 
   resources :talks do
     resources :annotations, only: [:create, :show, :edit, :update, :destroy]

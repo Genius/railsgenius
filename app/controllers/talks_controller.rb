@@ -1,5 +1,5 @@
 class TalksController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit]
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
   before_action :authorize!, only: [:edit, :update, :destroy]
 
